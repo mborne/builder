@@ -1,11 +1,23 @@
 # mborne/builder
 
-Vagrant helper to create VM to build docker images.
+[DEV] Vagrant helper to create VM to build multi-arch docker images.
 
 ## Features
 
 * Build docker image for multiple architectures with buildx and qemu
-* Use builder as jenkins node (openjdk11 is installed)
+* Use builder as jenkins node :
+
+```bash
+# given builder-1 is already registred :
+vagrant ssh builder-1 -c "sudo JENKINS_SECRET=****** /vagrant/bin/jenkins-agent-install.sh"
+```
+
+* Use builder as gitlab runner :
+
+```bash
+vagrant ssh builder-1 -c "sudo /vagrant/bin/gitlab-runner-install.sh"
+vagrant ssh builder-1 -c "sudo GITLAB_REGISTRATION_TOKEN=****** /vagrant/bin/gitlab-runner-register.sh"
+```
 
 ## Ressources
 
